@@ -1,31 +1,63 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <MainHeader @clicked="toggleSidebarBtn"></MainHeader>
+    <div id="wrapper">
+      <Sidebar :sidebar-open="sidebarOpen" id="sidebar"></Sidebar>
+      <main :class="{ slideon: sidebarOpen, slideoff: !sidebarOpen }">
+        <router-view />
+      </main>
     </div>
-    <router-view/>
+    <!-- <MainFooter /> -->
   </div>
 </template>
+<script>
+import MainHeader from '@/header/MainHeader.vue';
+// import MainFooter from '@/footer/MainFooter.vue';
+import Sidebar from '@/sidebar/Sidebar.vue';
+
+export default {
+  components: { MainHeader, Sidebar },
+  data() {
+    return {
+      sidebarOpen: true,
+      slide: 'slide-on',
+    };
+  },
+  methods: {
+    toggleSidebarBtn() {
+      this.sidebarOpen = !this.sidebarOpen;
+    },
+
+  },
+};
+</script>
 
 <style>
+body {
+  background-color: #181818 !important;
+}
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
-#nav {
-  padding: 30px;
+#sidebar {
+  top: 46px;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+main{
+  padding: 20px 30px;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.slideon {
+  margin-left: 53px;
+  transition: 0.4s;
+}
+.slideoff {
+  margin-left: 0;
+  transition: 0.4s;
 }
 </style>
