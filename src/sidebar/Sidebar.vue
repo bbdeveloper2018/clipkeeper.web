@@ -1,32 +1,21 @@
 <template>
   <b-nav class="sidebar" vertical :class="{ open: sidebarOpen }">
-    <!-- <b-nav-text class="link-section-text">
-      <span class="text-muted">Links</span>
-    </b-nav-text> -->
-    <b-nav-item href="#" id="Scenes" >
-      <font-awesome-icon icon="th" size="lg" style="color: lightgray;" />
+    <b-nav-item href="#" id="add" >
+      <font-awesome-icon icon="plus-circle" size="lg" style="color: lightgray;" />
     </b-nav-item>
-    <b-nav-item href="#" id="Stars" >
-      <font-awesome-icon icon="th" size="lg" style="color: lightgray;" />
+    <b-nav-text><hr/></b-nav-text>
+    <b-nav-item href="#" id="andor">
+      <font-awesome-layers class="fa-lg">
+        <font-awesome-icon icon="circle" style="color: lightgray;" />
+        <font-awesome-layers-text value="&amp;" transform="shrink-4"  style="color: black; padding-left:0px; font-weight: 600;" />
+      </font-awesome-layers>
     </b-nav-item>
-    <b-nav-item href="#" id="Categories" >
-      <font-awesome-icon icon="th" size="lg" style="color: lightgray;" />
+    <b-nav-item href="#" id="filter" >
+      <font-awesome-icon icon="filter" size="lg" style="color: lightgray;" />
     </b-nav-item>
-    <b-nav-item href="#" id="DVDs" >
-      <font-awesome-icon icon="th" size="lg" style="color: lightgray;" />
-    </b-nav-item>
-    <b-nav-item href="#" id="Websites" >
-      <font-awesome-icon icon="th" size="lg" style="color: lightgray;" />
-    </b-nav-item>
-    <b-nav-item href="#" id="Settings" >
-      <font-awesome-icon icon="th" size="lg" style="color: lightgray;" />
-    </b-nav-item>
-    <b-nav-item href="#" id="Logs" >
-      <font-awesome-icon icon="th" size="lg" style="color: lightgray;" />
-    </b-nav-item>
-    <b-tooltip target="Scenes" placement="right">Scenes</b-tooltip>
-    <b-tooltip target="Stars" placement="right">Stars</b-tooltip>
-    <b-tooltip target="Categories" placement="right">Categories</b-tooltip>
+    <b-tooltip target="add" placement="right">Add</b-tooltip>
+    <b-tooltip target="andor" placement="right">Toggle Operator</b-tooltip>
+    <b-tooltip target="filter" placement="right">Filter</b-tooltip>    
     <b-tooltip target="DVDs" placement="right">DVDs</b-tooltip>
     <b-tooltip target="Websites" placement="right">Websites</b-tooltip>
     <b-tooltip target="Settings" placement="right">Settings</b-tooltip>
@@ -54,22 +43,11 @@ export default {
           transform: translate(-1000px, 0);
   position: fixed;
   height: 100%;
+  /* overflow-y: hidden; */
 }
 .open {
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
-}
-.title-text {
-  color: #aaa;
-}
-#side-top {
-  margin-left: 12px;
-  margin-top: 14px;
-  margin-right:10px;
-
-}
-#side-top div {
-  display: inline-block;
 }
 #brand-logo {
   width: 30px;

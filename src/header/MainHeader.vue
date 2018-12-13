@@ -1,55 +1,57 @@
 <template>
-  <div id="header">
-    <div id="side-menu-toggle" @click="toggleSideMenu()">
-      <font-awesome-icon icon="bars"></font-awesome-icon>
-    </div>
-    <div id="brand">
-      <font-awesome-icon icon="film" hide-sm></font-awesome-icon>
+  <b-navbar toggleable="md" type="dark" variant="dark">
+    <font-awesome-icon icon="chevron-circle-left" @click="toggleSideMenu()" class="pointer" size="lg" :transform="arrow_transform"></font-awesome-icon>
+    <b-navbar-brand href="#" id="brand">
+      <font-awesome-icon icon="film" @click="toggleSideMenu()"></font-awesome-icon>
       Clip Keeper
-    </div>
-    <div class="flex"></div>
-    <div id="header-items">Welcome Dude!</div>
-  </div>
+    </b-navbar-brand>
+    <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+    
+    <b-collapse is-nav id="nav_collapse">
+      <b-navbar-nav  class="ml-auto">
+        <b-nav-item href="#" active>Scenes</b-nav-item>
+        <b-nav-item href="#">Stars</b-nav-item>
+        <b-nav-item href="#">Categories</b-nav-item>
+        <b-nav-item href="#">DVDs</b-nav-item>
+        <b-nav-item href="#">Websites</b-nav-item>
+        <b-nav-item href="#">Settings</b-nav-item>
+        <b-nav-item href="#">Log</b-nav-item>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
 </template>
 <script>
 export default {
   name: 'MainNavbar',
-  methods: {
-    toggleSideMenu() {
-      this.$emit('clicked');
+  data: function() {
+    return {
+      arrow_index: 0,
+    }
+  },
+  computed: {
+    arrow_transform: function() {
+      return { rotate: this.arrow_index };
     },
   },
+  methods: {
+    toggleSideMenu() {
+      this.$emit('clicked');        
+      this.arrow_index = Math.abs(this.arrow_index - 180);
+    },
+    rotate(start, stop, reverse) {
+      setTimeout(function() {
+        this.arrow_index = 180;
+      }, 1000);
+    },
+  },  
 };
 </script>
 <style scoped>
-#header {
-  top: 0;
-  width: 100%;
-  position: fixed;
-  background-color:#222;
-  color: lightgray;
-  padding: 5px;
-  display: flex;
-  vertical-align: middle;
-}
-#header div {
-  display: inline-block;
-}
-#header #side-menu-toggle{
-  margin-right: 40px;
-  padding-top: 5px;
-  padding-left:10px;
-  cursor: pointer;
-}
-#header #brand{
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 36x;
-}
-.flex {
-  flex-grow: 1;
-}
-#header-items {
-  padding-top: 5px;
-}
+  .pointer {
+    cursor: pointer;
+    color: gray;    
+  }
+  #brand {
+    padding-left: 40px;
+  }
 </style>

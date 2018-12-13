@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <MainHeader @clicked="toggleSidebarBtn"></MainHeader>
+    <MainHeader @clicked="toggleSidebarBtn" style="z-index: 10;"></MainHeader>
     <div id="wrapper">
       <Sidebar :sidebar-open="sidebarOpen" id="sidebar"></Sidebar>
       <main :class="{ slideon: sidebarOpen, slideoff: !sidebarOpen }">
@@ -47,7 +47,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 #sidebar {
-  top: 46px;
+  /* top: 46px; */
+  /* padding-top: 0px; */
+  /* z-index: -1; */
 }
 main{
   padding: 20px 30px;
